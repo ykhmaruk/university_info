@@ -35,6 +35,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional
     public String getStatisticOfDepartment(String departmentName) {
         Department department = findByName(departmentName);
 
@@ -56,6 +57,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional
     public double getAveregeSalaryOfDepartment(String departmentName) {
         Department department = findByName(departmentName);
         if (department.getLectors() == null) {
@@ -70,6 +72,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional
     public Long getNumberOfLectorsInDepartment(String departmentName) {
         Department department = findByName(departmentName);
         return (long) (department.getLectors() == null ? 0 : department.getLectors().size());
