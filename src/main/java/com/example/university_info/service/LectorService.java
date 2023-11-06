@@ -1,6 +1,7 @@
 package com.example.university_info.service;
 
-import com.example.university_info.entity.Lector;
+import java.util.List;
 
-public interface LectorService extends AbstractService<Lector>{
+public interface LectorService {
+    List<String> getNamesByTemplate(String template);
 }
