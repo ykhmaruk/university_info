@@ -38,8 +38,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     @Transactional
     public Department update(Department department) {
-        Department departmentFromDb = departmentRepository.findById(department.getId()).orElseThrow(() ->
-                new NoSuchElementException("Can't find department by id: " + department.getId()));
+        Department departmentFromDb =
+                departmentRepository.findById(department.getId()).orElseThrow(() ->
+                        new NoSuchElementException(
+                                "Can't find department by id: " + department.getId()));
         /* чи краще замінити це на виклик
         Department departmentFromDb = getById(department.getId());
          */
@@ -47,5 +49,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         departmentFromDb.setName(department.getName());
         departmentFromDb.setLectors(department.getLectors());
         return departmentFromDb;
+    }
+
+    @Override
+    public String findHeadOfDepartment(String departmentName) {
+        Department department = departmentRepository.findByName(departmentName).orElseThrow(() ->
+                new NoSuchElementException("Can't find department by name: " + departmentName));
+        return department.ge
     }
 }
